@@ -35,7 +35,6 @@ class AirlineReservationGUI:
         self.root.title("Airline Ticket Reservation")
         self.records = load_records()
         self.seats = {str(i): None for i in range(1, 101)}  # 100 seats available
-        self.update_seat_count()
 
         # Label and Entry Widgets
         self.ticket_label = tk.Label(root, text="Ticket Number:")
@@ -43,8 +42,12 @@ class AirlineReservationGUI:
         self.ticket_entry = tk.Entry(root)
         self.ticket_entry.pack()
 
+        # Seats Label
         self.seats_label = tk.Label(root, text=f"Available Seats: {self.count_available_seats()}")
         self.seats_label.pack()
+
+        # Initial update to seat count label
+        self.update_seat_count()
 
         # Buttons
         self.book_button = tk.Button(root, text="Book Ticket", command=self.book_ticket)
